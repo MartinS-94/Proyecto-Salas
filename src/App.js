@@ -1,17 +1,21 @@
 
 import React from "react";
-import {BrowserRouter as Router} from "react-router-dom";
+import ItemListContainer from "./components/ItemListContainer";
 import NavBar from "./components/NavBar";
 
 export default function App() {
 
   return (
     <>
-      <Router>
-        <NavBar/>
-      </Router>
+      <div>
+        <header>
+          <NavBar/>
+        </header>
+          <ItemListContainer name="Martin" />
+
+
       
-    
+      </div>
     </>
   );
 }
