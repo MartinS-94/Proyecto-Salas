@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import customFetch from '../../utils/CustomFetch';
-import listaProductos from '../../utils/ListaProductos';
+import customFetch from '../../utils/customFetch';
+import listaProductos from '../../utils/listaProductos';
 import ItemList from './ItemList';
 import s from './ItemListContainer.module.css'
 
