@@ -7,14 +7,11 @@ export default function App() {
 
   return (
     <>
-      <div>
-        <header>
-          <NavBar/>
-        </header>
-          <ItemListContainer/>
+          <NavBar />
+          <ItemListContainer />
 
 
-      </div>
+
     </>
   );
 }

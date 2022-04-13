@@ -7,7 +7,7 @@ const NavBar = () => {
 
     return (
     <>
-    <Container>
+
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand" href="#">LOGO</a>
@@ -24,7 +24,7 @@ const NavBar = () => {
             <CartWidget />
         </nav>
         
-    </Container>
+
     
     </>
     );
