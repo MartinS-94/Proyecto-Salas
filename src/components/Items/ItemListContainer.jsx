@@ -8,7 +8,7 @@ export default function ItemListContainer() {
     const [productos , setProductos] = useState([]);
 
     useEffect(() =>{
-        customFetch(3000, listaProductos)
+        customFetch(500, listaProductos)
         .then(res => setProductos(res))
         .catch(err => console.log(err))
     },[productos])
