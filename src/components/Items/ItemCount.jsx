@@ -1,42 +1,40 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
+import { CartContext } from '../Context/CartContextProvider';
 import s from './ItemCount.module.css'
 
-function ItemCount({stock,initial}) {
-    const [count, setCount] = useState(initial);
+function ItemCount({producto}) {
+    const [count, setCount] = useState(1);
 
-function sumar(){
-    if(count < stock){
-        setCount(count + 1);
+    const {addToCart} = useContext(CartContext);
+
+    const {isInCart} = useContext(CartContext);
+
+    function sumar(){
+        if(count < producto.stock){
+            setCount(count + 1);
+        }
     }
-}
 
-function restar(){
-    if (count > 0 ){
-        setCount(count - 1);
+    function restar(){
+        if (count > 0 ){
+            setCount(count - 1);
+        }
     }
-}
 
-function onAdd(){
-    alert('Compraste ' + count + ' Item1')
-}
+    function onAdd(){
+        let item = {...producto, count};
+        isInCart(item) ? alert('ya en carrito') : addToCart(item);
+    }
 
-return (
+    return (
     <>
-        <Card style={{ width: '18rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <Card.Body>
-            <Card.Title>Item 1</Card.Title>
-            <Card.Text>
-            descripcion del item1
-            </Card.Text>
-            <div style={{ display: 'flex', gap: '20px' }}>
-            <Button variant="secondary" onClick={restar}>-</Button>
-            <h2>{count}</h2>
-            <Button variant="secondary" onClick={sumar}>+</Button>
-            </div>
-            <Button variant="success" onClick={onAdd}>Comprar</Button>
-        </Card.Body>
-        </Card>
+        <div style={{ display: 'flex', gap: '20px' }}>
+        <Button variant="secondary" onClick={restar}>-</Button>
+        <h2>{count}</h2>
+        <Button variant="secondary" onClick={sumar}>+</Button>
+        </div>
+        <Button variant="success" onClick={onAdd}>Comprar</Button>
     </>
 );
 };

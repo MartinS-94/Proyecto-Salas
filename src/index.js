@@ -4,9 +4,20 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
-import Popper from 'popper.js';
+import { initializeApp } from "firebase/app";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBZYvBpysPT-amQ-X8ChmecfcFkcwM5VfY",
+  authDomain: "martin-e-commerce-e6acf.firebaseapp.com",
+  projectId: "martin-e-commerce-e6acf",
+  storageBucket: "martin-e-commerce-e6acf.appspot.com",
+  messagingSenderId: "752824104627",
+  appId: "1:752824104627:web:c8076b172550eac71be2c6"
+};
+
+initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>

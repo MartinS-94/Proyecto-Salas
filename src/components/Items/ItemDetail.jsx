@@ -36,9 +36,9 @@ function ItemDetail ({producto}) {
                 <h2>STOCK: {producto.stock}</h2>
             </Col>
         </Row>
-
+        <ItemCount producto={producto}/>
     </Container>
-
+    
     );
 }
 

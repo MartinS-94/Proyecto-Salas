@@ -1,9 +1,8 @@
 import React from 'react'
-import listaProductos from '../../utils/listaProductos';
 import ItemDetail from './ItemDetail'
 import { useState, useEffect } from 'react'
-import customFetch from '../../utils/customFetch';
 import { useParams } from 'react-router-dom';
+import { collection, doc, getDoc, getDocs, getFirestore } from 'firebase/firestore';
 
 function ItemDetailContainer() {    
         // fetch que me de un producto 
@@ -12,14 +11,16 @@ function ItemDetailContainer() {
     const {itemId} = useParams();
 
     useEffect(() =>{
-        customFetch(500, listaProductos)
-        .then(res => {
-            setProducto(res.find(i => i.id == itemId));
-            console.log(res);
-        } )
-        .catch(err => console.log(err))
-    },[producto])
-    console.log(producto);
+        const db = getFirestore();
+        const itemRef = doc(db, 'productos', itemId);
+
+        getDoc(itemRef)
+        .then((res) => {
+            if (res.exists()) {
+                setProducto({id: res.id, ...res.data()});
+            }
+        })
+    },[itemId])
     return (
     <ItemDetail producto={producto} />
     )
