@@ -3,20 +3,18 @@ import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
-function Item({stock, id, imagen}) {
-    const destino = `/item/${id}`
+function Item({producto}) {
     return (
         <>
             {/* le pongo el estilo aca provisoriamente */}
-            <Card key={id} style={{ width: '12rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <Link to = {destino}>
-                <Card.Img variant="top" src={imagen} />
+            <Card key={producto.id} style={{ width: '12rem', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <Link to = {`/item/${producto.id}`}>
+                <Card.Img className="foto-producto" variant="top" src={producto.imagen} />
                 </Link>
                 <Card.Body>
-                <Card.Title>{id}</Card.Title>
-                <Card.Text> Alguna descripcion del item{id} </Card.Text>
+                <Card.Title className="nombre-producto">{producto.nombre}</Card.Title>
                 </Card.Body>
-                <Card.Text> Disponibles: {stock} </Card.Text>
+                <Card.Text className="stock-producto"> Disponibles: {producto.stock} </Card.Text>
             </Card>
         </>
     )

@@ -5,10 +5,8 @@ function ItemList({productos}) {
     
     return (
             productos.map(e => (
-            <Item 
-            stock={e.stock} 
-            id={e.id}
-            imagen = {e.imagen}
+            <Item key={e.id}
+            producto = {e}
             />
             ))
     )

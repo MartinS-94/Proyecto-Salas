@@ -1,33 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { getDocs, getFirestore, collection } from 'firebase/firestore';
-// import customFetch from '../../utils/customFetch';
-// import listaProductos from '../../utils/listaProductos';
+import { getDocs, getFirestore, collection, query, where } from 'firebase/firestore';
 import ItemList from './ItemList';
-import s from './ItemListContainer.module.css'
+import s from './ItemListContainer.module.css';
+import { useParams } from 'react-router-dom';
 
-export default function ItemListContainer() {
+
+export default function ItemListContainer({promo}) {
     const [productos , setProductos] = useState([]);
 
-    // useEffect(() =>{
-    //     customFetch(500, listaProductos)
-    //     .then(res => setProductos(res))
-    //     .catch(err => console.log(err))
-    // },[productos])
+    const {categoryId} = useParams();
 
     useEffect(() =>{
         const db = getFirestore();
         const productsCollection = collection(db, 'productos');
-
-        // const q = query(productsCollection, where('categoria', '===', 'Ipa'));
-        // if category ? query : completa
-        getDocs(productsCollection)
-        .then((res) =>{
-            if (res.size === 0) {
-                console.log('No Results')
-            }
-            setProductos(res.docs.map(doc => ({id: doc.id, ...doc.data()})));
-        })
-    },[])
+        let q = [];
+        if(promo) {
+            q = query(productsCollection, where('promo', '==', true));
+        } else if (categoryId){
+            q = query(productsCollection, where('categoria', '==', categoryId));
+        } else {
+            q = productsCollection;
+        }
+        getDocs(q)
+            .then((res) =>{
+                if (res.size === 0) {
+                    console.log('No Results');
+                }else {
+                    setProductos(res.docs.map(doc => ({id: doc.id, ...doc.data()})))
+                }});
+        },[promo,categoryId])
 
     return (
         <main className={s.contenedorProductos}>

@@ -1,0 +1,12 @@
+.dropdown-menu{
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown-menu ul{
+    margin: 0px!important;
+    padding:0px!important;
+    width: 70vw;
+    display: flex;
+    justify-content: space-evenly;
+}

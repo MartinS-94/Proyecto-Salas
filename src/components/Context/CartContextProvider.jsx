@@ -17,10 +17,12 @@ function CartContextProvider({children}) {
         setCart([]);
     };
 
+    const [enCarrito, setEnCarrito] = useState(false);
+
     const isInCart = (item) => cart.find(i => i.id === item.id) ? true : false;
 
     return (
-        <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, isInCart}}>
+        <CartContext.Provider value={{cart, addToCart, removeFromCart, clearCart, isInCart, setEnCarrito, enCarrito}}>
         {children}
         </CartContext.Provider>
     )

@@ -8,6 +8,8 @@ function Cart() {
 
     const {removeFromCart} = useContext(CartContext);
 
+    const {clearCart} = useContext(CartContext);
+
     const [total, setTotal] = useState(0);
 
     const navigate = useNavigate();
@@ -33,7 +35,7 @@ function Cart() {
                     <p>Precio</p>
             </div>
             {cart.map(e => (
-                <div>
+                <div key={e.id}>
                     <p>{e.nombre}</p>
                     <p>{e.count}</p>
                     <p>{e.precio}</p>
@@ -42,6 +44,7 @@ function Cart() {
             ))}
             <h2>Total: {total}</h2>
             <button onClick={() => {navigate('/checkout')}}>Finalizar Compra</button>
+            <button onClick={() => {clearCart()}}>Vaciar Carrito</button>
         </>
     )
 }

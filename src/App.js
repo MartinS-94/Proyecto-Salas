@@ -18,7 +18,9 @@ export default function App() {
           <NavBar />
           <Routes>
           <Route exact path="/" element={<ItemListContainer />}/>
+          <Route exact path="/promo" element={<ItemListContainer promo = {true} />}/>
           <Route exact path="/item/:itemId" element={<ItemDetailContainer />} />
+          <Route exact path="/category/:categoryId" element={<ItemListContainer />} />
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout />} />
           <Route exact path="/checkoutdone/:orderId" element={<CheckoutDone />} />

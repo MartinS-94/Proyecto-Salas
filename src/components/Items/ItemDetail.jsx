@@ -6,7 +6,7 @@ import ItemCount from "./ItemCount";
 function ItemDetail ({producto}) {
     console.log(producto);
     return (
-        <Container style = {{textAlign : "center"}}>
+        <Container style = {{alignItems : "center"}}>
         <Row>
         <Col xs={12} md={8}>
             <img src={producto.imagen} />
@@ -20,16 +20,8 @@ function ItemDetail ({producto}) {
         <Col xs={12} md={12}>
             <h2>$ {producto.precio}</h2>
         </Col>
-        <Col xs={12} md={4}>
-            <h2>ItemCount</h2>
-        </Col>
         </Row>
 
-        <Row>
-            <Col xs={12} sm={8}>
-                <h2>boton agregar al carrito</h2>
-            </Col>
-        </Row>
 
         <Row>
             <Col xs={12} sm={8} >
